@@ -1,7 +1,11 @@
+import UseEffect from "../../containers/useEffect";
 
 const Main = () => {
     return(
-        <div>MAin Page</div>
+        <div>
+            Main Page
+            <UseEffect/>
+        </div>
     )
 }
 export default Main;
