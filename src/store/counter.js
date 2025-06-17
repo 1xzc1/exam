@@ -1,22 +1,22 @@
+import {INCREMENT, DECREMENT, ADD, SUBTRACT} from "../store/actions";
+
 const initialState = {
     counter: 0,
 }
 
 const counterReducer = (state = initialState, action) => {
-
-    if (action.type === 'INCREMENT') {
-        return { counter: state.counter + 1 };
+    switch(action.type) {
+        case INCREMENT: 
+            return {counter: state.counter + 1}
+        case DECREMENT: 
+            return {counter: state.counter - 1}
+        case ADD: 
+            return {counter: state.counter + action.amount}
+        case SUBTRACT: 
+            return {counter: state.counter - action.amount}
+        default:
+            return state
     }
-    if (action.type === 'DECREMENT') {
-        return { counter: state.counter - 1 };
-    }
-    if (action.type === 'ADD') {
-        return { counter: state.counter + action.value };
-    }
-    if (action.type === 'SUBTRACT') {
-        return { counter: state.counter - action.value };
-    }
-    return state;
 }
 
 export default counterReducer;

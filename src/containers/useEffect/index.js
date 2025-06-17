@@ -1,7 +1,19 @@
 import { useEffect, useState } from "react";
-import axios from "../../axios";
+import {searchBooks} from "../../store/actions"
+import { connect } from "react-redux";
 
-const UseEffect = () => {
+
+const mapStateToProps = state => {
+    return {
+        data: state.books.books
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        search: (data) => dispatch(searchBooks(data)),
+    }
+}
+const UseEffect = (props) => {
     const [searchText, setSearchText] = useState('');
     const [result, setResult] = useState({});
     const [list, setList]= useState(null);
@@ -16,15 +28,13 @@ const UseEffect = () => {
         if(text.length > 0) {
             text.split(' ').join('+');
             url += text;
-
-            axios.get(url).then(res=>{
-                setResult(res.data);
-            })
+            
+            props.search(url)
         }
     }
     useEffect(()=>{
-        if (result && result.docs) {
-        let list = result.docs.map(item => {
+        if (props.data && props.data.docs) {
+        let list = props.data.docs.map(item => {
             return (
                 <li key={item.key}>
                     <div>
@@ -56,4 +66,4 @@ const UseEffect = () => {
     )
 }
 
-export default UseEffect;
+export default connect(mapStateToProps, mapDispatchToProps)(UseEffect);

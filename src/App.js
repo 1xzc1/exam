@@ -16,7 +16,7 @@ function App() {
           <Header />
         <Routes>
           <Route exact path='/' Component={Counter}/>
-          <Route exact path='/page1' Component={Page1}/>
+          <Route exact path='/page1' Component={Main}/>
           <Route exact path='/404' Component={Page404}/>
           <Route
               path="*"
