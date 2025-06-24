@@ -15,7 +15,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 const UseEffect = (props) => {
     const [searchText, setSearchText] = useState('');
-    const [result, setResult] = useState({});
     const [list, setList]= useState(null);
 
    
@@ -50,7 +49,7 @@ const UseEffect = (props) => {
         })
         setList(list)}
 
-    },[result])
+    },[props.books])
     
     return (
         <div>
