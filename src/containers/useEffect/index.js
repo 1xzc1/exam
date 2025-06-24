@@ -49,7 +49,7 @@ const UseEffect = (props) => {
         })
         setList(list)}
 
-    },[props.books])
+    },[props.data])
     
     return (
         <div>
